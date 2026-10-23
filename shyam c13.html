@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Profit Investigator – Cross-Functional AI Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#0e0b24;--panel:#171236;--panel2:#1f1947;--line:#322a69;--tx:#f1eeff;--mut:#a59fd0;
+--mk:#ff4fa3;--hr:#ffb23e;--op:#22d3b6;--fi:#5b8cff;--bad:#ff5c6c;--ok:#4ade80}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:radial-gradient(1200px 600px at 10% -10%,#2b1a66 0,transparent 60%),radial-gradient(900px 500px at 100% 0,#10405a 0,transparent 55%),var(--bg);color:var(--tx);font:14px/1.5 Sora,system-ui,sans-serif}
+.wrap{max-width:1240px;margin:0 auto;padding:20px 16px 48px}
+h1{font:600 clamp(26px,4vw,40px)/1.1 Fraunces,Georgia,serif;margin:0 0 6px}
+h2{font-size:15px;margin:0 0 4px;font-weight:800}
+.sub{color:var(--mut);margin:0 0 14px;font-size:12.5px}
+header{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-end;margin-bottom:18px}
+.pill{display:inline-flex;gap:8px;align-items:center;background:var(--panel2);border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:12px;color:var(--mut)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:18px;padding:16px;min-width:0}
+.dept{border-top:4px solid var(--c)}
+.dept .big{font-size:26px;font-weight:800;color:var(--c)}
+.tag{font-size:11px;border-radius:99px;padding:2px 9px;background:#4ade8022;color:var(--ok)}
+.tag.r{background:#ff5c6c22;color:var(--bad)}
+.kpi{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.kpi b{font-size:34px;font-weight:800}
+section{margin-top:22px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+button,.chip{font:inherit;cursor:pointer}
+.chip{border:1px solid var(--c,var(--line));color:var(--c,var(--tx));background:transparent;border-radius:99px;padding:5px 11px;font-size:12px}
+.chip.on{background:var(--c,var(--line));color:#10092b;font-weight:600}
+.chip:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #fff;outline-offset:2px}
+svg{width:100%;height:auto;display:block}
+.hm{display:grid;gap:2px;overflow-x:auto}
+.hm div{font-size:10.5px;text-align:center;padding:7px 2px;border-radius:5px;min-width:40px;white-space:nowrap}
+.hm .l{color:var(--mut);text-align:right;padding-right:6px;background:none}
+.chain{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.node{flex:1 1 150px;border-radius:14px;padding:12px;background:#ffffff0d;border:1px solid var(--c);position:relative}
+.node b{color:var(--c);display:block;font-size:12px}
+.node small{color:var(--mut)}
+.arrow{align-self:center;color:var(--mut);font-size:20px}
+.chat{display:flex;flex-direction:column;height:430px}
+.msgs{flex:1;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:4px 2px}
+.m{max-width:88%;padding:9px 12px;border-radius:14px;white-space:pre-wrap}
+.m.u{align-self:flex-end;background:linear-gradient(135deg,var(--mk),#9b5bff);color:#fff}
+.m.a{background:#ffffff12;border:1px solid var(--line)}
+.row{display:flex;gap:8px;margin-top:8px}
+input[type=text]{flex:1;background:#0e0b2480;border:1px solid var(--line);border-radius:12px;color:var(--tx);padding:10px 12px;font:inherit}
+.btn{background:linear-gradient(135deg,var(--op),var(--fi));color:#07102b;border:0;border-radius:12px;padding:10px 16px;font-weight:800}
+.log{font:12px/1.7 ui-monospace,Menlo,monospace;background:#0a0720;border-radius:12px;padding:12px;min-height:190px;max-height:260px;overflow:auto;color:#cfc9ff}
+.log i{font-style:normal;color:var(--op)}
+.sl{display:grid;grid-template-columns:130px 1fr 70px;gap:10px;align-items:center;margin:9px 0}
+input[type=range]{width:100%;accent-color:var(--c)}
+.bar{height:10px;border-radius:9px;background:#ffffff14;overflow:hidden}.bar>span{display:block;height:100%;transition:width .4s}
+.rec{display:flex;gap:10px;padding:10px;border-radius:12px;background:#ffffff0a;margin-bottom:8px;border-left:4px solid var(--c)}
+.rec b{color:var(--c)}
+.wf{overflow-x:auto}
+</style></head><body><div class="wrap">
+
+<header>
+ <div><h1>Profit Investigator</h1>
+ <p class="sub" style="margin:0">An AI analyst that joins Marketing, HR, Operations and Finance data to find why profit fell while every department reports “green”. All data is assumed, for demonstration.</p></div>
+ <span class="pill"><span class="dot"></span>Agent online · 12 months · 10 metrics · 4 sources linked</span>
+</header>
+
+<div class="grid g4" id="kpis"></div>
+
+<section>
+ <h2>The paradox: every department looks fine on its own</h2>
+ <p class="sub">Each team hits its own target, yet the company margin slid for three quarters in a row.</p>
+ <div class="grid g2">
+  <div class="card"><h2>Net profit margin by quarter</h2><div id="qchart"></div></div>
+  <div class="card"><h2>Department self-reports</h2><div class="grid" id="depts" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"></div></div>
+ </div>
+</section>
+
+<section>
+ <h2>Cross-functional explorer</h2>
+ <p class="sub">Pick metrics to overlay (indexed 0–100 so different units compare). Watch which lines move together.</p>
+ <div class="card"><div class="chips" id="chips"></div><div id="lchart"></div></div>
+</section>
+
+<section>
+ <div class="grid g2">
+  <div class="card"><h2>Correlation heatmap</h2><p class="sub">Pink = move together, blue = move opposite. Hover a cell for detail.</p><div class="hm" id="hm"></div></div>
+  <div class="card"><h2>Margin bridge: where 6.4 points went</h2><p class="sub">Q1 to Q4, by cross-functional driver.</p><div class="wf" id="wf"></div></div>
+ </div>
+</section>
+
+<section>
+ <h2>Root-cause chain found by the agent</h2>
+ <p class="sub">One decision in Marketing starts a loop that every other department absorbs quietly.</p>
+ <div class="card"><div class="chain" id="chain"></div></div>
+</section>
+
+<section>
+ <div class="grid g2">
+  <div class="card"><h2>Run the investigation</h2><p class="sub">Watch the agent work through the data.</p>
+   <button class="btn" id="run">Run full investigation</button>
+   <div class="log" id="log" style="margin-top:10px">Waiting to start…</div></div>
+  <div class="card chat"><h2>Ask the analyst</h2>
+   <div class="chips" id="sugg"></div>
+   <div class="msgs" id="msgs"></div>
+   <div class="row"><input type="text" id="q" placeholder="Ask about discounts, attrition, freight, cash…" aria-label="Ask the analyst"><button class="btn" id="send">Ask</button></div></div>
+ </div>
+</section>
+
+<section>
+ <div class="grid g2">
+  <div class="card"><h2>What-if simulator</h2><p class="sub">Move each driver back toward its Q1 level and see projected margin.</p><div id="sims"></div>
+   <div class="kpi"><b id="proj">11.8%</b><span class="sub" id="projd" style="margin:0">no change</span></div>
+   <div class="bar"><span id="projb" style="width:30%;background:linear-gradient(90deg,var(--bad),var(--hr),var(--ok))"></span></div></div>
+  <div class="card"><h2>Recommended actions</h2><p class="sub">Ranked by recovered margin points, owned jointly.</p><div id="recs"></div></div>
+ </div>
+</section>
+</div>
+
+<script>
+const MON=['Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct'];
+const C={mk:'#ff4fa3',hr:'#ffb23e',op:'#22d3b6',fi:'#5b8cff'};
+const nz=(a,k,s)=>a.map((v,i)=>+(v+Math.sin(i*k+s)*s*0.35).toFixed(2));
+const D={
+ margin:{n:'Net margin %',c:C.fi,d:[18.5,18.3,18.2,17.5,16.8,16.1,15.2,14.4,13.6,12.9,12.3,11.8]},
+ mql:{n:'Marketing leads',c:C.mk,d:nz([900,950,1000,1080,1150,1250,1330,1420,1500,1600,1680,1780],1.7,30)},
+ disc:{n:'Avg discount %',c:C.mk,d:nz([5,5,6,6,7,8,9,10,11,12,13,14],2.3,.4)},
+ conv:{n:'Lead-to-order %',c:C.mk,d:nz([8.2,8.1,7.9,7.5,7.1,6.6,6.2,5.8,5.4,5.1,4.8,4.5],1.3,.15)},
+ attr:{n:'Attrition %',c:C.hr,d:nz([9,9,10,10,11,12,13,14,15,16,17,18],2.9,.5)},
+ ot:{n:'Overtime hrs/emp',c:C.hr,d:nz([10,10,11,12,12,14,16,18,19,21,23,25],1.9,.8)},
+ exp:{n:'Expedited freight % rev',c:C.op,d:nz([2,2.1,2.2,2.5,2.8,3.1,3.6,4,4.5,5,5.4,5.9],2.1,.12)},
+ inv:{n:'Inventory days',c:C.op,d:nz([38,38,39,41,42,45,47,50,52,55,58,60],1.1,.9)},
+ dso:{n:'Days sales outstanding',c:C.fi,d:nz([41,41,42,43,45,46,48,50,52,54,56,58],2.6,.7)},
+ rev:{n:'Revenue ($M)',c:C.fi,d:nz([10,10.2,10.4,10.9,11.3,11.8,12.2,12.6,13,13.4,13.7,14],1.5,.15)}
+};
+const keys=Object.keys(D);
+const q=i=>D.margin.d.slice(i*3,i*3+3).reduce((a,b)=>a+b)/3;
+const $=id=>document.getElementById(id);
+const corr=(a,b)=>{const n=a.length,ma=a.reduce((x,y)=>x+y)/n,mb=b.reduce((x,y)=>x+y)/n;let s=0,x=0,y=0;for(let i=0;i<n;i++){s+=(a[i]-ma)*(b[i]-mb);x+=(a[i]-ma)**2;y+=(b[i]-mb)**2}return s/Math.sqrt(x*y)};
+
+// KPIs
+const qs=[0,1,2,3].map(q),mg=D.margin.d;
+$('kpis').innerHTML=[
+ ['Q4 net margin',qs[3].toFixed(1)+'%','down '+(qs[0]-qs[3]).toFixed(1)+' pts since Q1',C.fi,1],
+ ['Revenue growth','+40%','Nov to Oct, still rising',C.op,0],
+ ['Profit per $ of revenue','−$0.07','vs Q1 baseline',C.mk,1],
+ ['Departments off target','0 of 4','all self-report green',C.hr,0]
+].map(k=>`<div class="card dept" style="--c:${k[3]}"><div class="sub" style="margin:0">${k[0]}</div><div class="big">${k[1]}</div><span class="tag ${k[4]?'r':''}">${k[2]}</span></div>`).join('');
+
+// Department self reports
+$('depts').innerHTML=[
+ ['Marketing',C.mk,'+98% leads','Target +60%'],
+ ['HR',C.hr,'96% roles filled','Target 90%'],
+ ['Operations',C.op,'97% on-time ship','Target 95%'],
+ ['Finance',C.fi,'Opex 2% under plan','Target ±3%']
+].map(d=>`<div class="card dept" style="--c:${d[1]};padding:12px"><b>${d[0]}</b><div class="big" style="font-size:18px">${d[2]}</div><span class="tag">✓ ${d[3]}</span></div>`).join('');
+
+// Quarter bar chart
+(()=>{let w=520,h=240,s=`<svg viewBox="0 0 ${w} ${h}">`;
+ qs.forEach((v,i)=>{const bh=(v-8)/(20-8)*170,x=40+i*120,col=i==0?C.op:['#ffb23e','#ff8a4f','#ff4f6e'][i-1];
+ s+=`<rect x="${x}" y="${200-bh}" width="80" height="${bh}" rx="10" fill="${col}"/><text x="${x+40}" y="${192-bh}" text-anchor="middle" fill="#fff" font-weight="800" font-size="16">${v.toFixed(1)}%</text><text x="${x+40}" y="222" text-anchor="middle" fill="#a59fd0" font-size="12">Q${i+1}</text>`;
+ if(i)s+=`<text x="${x+40}" y="${212-bh+22}" text-anchor="middle" fill="#10092b" font-size="11" font-weight="700">${(v-qs[i-1]).toFixed(1)}</text>`});
+ $('qchart').innerHTML=s+'</svg>'})();
+
+// Overlay line chart
+let sel=new Set(['margin','disc','attr','exp']);
+$('chips').innerHTML=keys.map(k=>`<button class="chip" data-k="${k}" style="--c:${D[k].c}">${D[k].n}</button>`).join('');
+function drawL(){document.querySelectorAll('#chips .chip').forEach(b=>b.classList.toggle('on',sel.has(b.dataset.k)));
+ const w=900,h=300,p=34;let s=`<svg viewBox="0 0 ${w} ${h}">`;
+ for(let i=0;i<=4;i++){const y=p+i*(h-2*p)/4;s+=`<line x1="${p}" x2="${w-10}" y1="${y}" y2="${y}" stroke="#322a69"/>`}
+ MON.forEach((m,i)=>s+=`<text x="${p+i*(w-p-14)/11}" y="${h-8}" fill="#a59fd0" font-size="11" text-anchor="middle">${m}</text>`);
+ [...sel].forEach(k=>{const d=D[k].d,mn=Math.min(...d),mx=Math.max(...d);
+  const pts=d.map((v,i)=>[p+i*(w-p-14)/11,h-p-(v-mn)/(mx-mn)*(h-2*p)]);
+  s+=`<polyline fill="none" stroke="${D[k].c}" stroke-width="3" stroke-linejoin="round" stroke-dasharray="${k=='margin'?'':'0'}" points="${pts.map(x=>x.join(',')).join(' ')}"/>`+pts.map(x=>`<circle cx="${x[0]}" cy="${x[1]}" r="3.5" fill="${D[k].c}"/>`).join('')+`<text x="${pts[11][0]-6}" y="${pts[11][1]-8}" fill="${D[k].c}" font-size="11" text-anchor="end">${D[k].n}</text>`});
+ $('lchart').innerHTML=s+'</svg>'}
+$('chips').onclick=e=>{const k=e.target.dataset.k;if(!k)return;sel.has(k)?sel.delete(k):sel.add(k);drawL()};drawL();
+
+// Heatmap
+(()=>{const hk=['margin','mql','disc','conv','attr','ot','exp','inv','dso'];
+ let h=`<div style="display:grid;grid-template-columns:110px repeat(${hk.length},1fr);gap:2px"><div></div>`+hk.map(k=>`<div style="color:${D[k].c}">${D[k].n.split(' ')[0]}</div>`).join('');
+ hk.forEach(a=>{h+=`<div class="l" style="padding:7px 6px 7px 0;font-size:10.5px;color:${D[a].c};text-align:right">${D[a].n.split(' ').slice(0,2).join(' ')}</div>`;
+  hk.forEach(b=>{const r=corr(D[a].d,D[b].d),t=Math.abs(r),col=r>=0?`rgba(255,79,163,${.15+t*.8})`:`rgba(91,140,255,${.15+t*.8})`;
+  h+=`<div title="${D[a].n} vs ${D[b].n}: r=${r.toFixed(2)}" style="background:${col}">${r.toFixed(2)}</div>`})});
+ $('hm').innerHTML=h+'</div>'})();
+
+// Waterfall
+(()=>{const st=[['Q1 margin',qs[0],C.op,0],['Discount-led leads',-1.9,C.mk],['Attrition + overtime',-1.5,C.hr],['Rush freight + stock',-1.7,C.op],['Slow cash (DSO)',-1.3,C.fi],['Q4 margin',qs[3],'#ff4f6e',0]];
+ const w=560,h=270;let s=`<svg viewBox="0 0 ${w} ${h}" style="min-width:480px">`,cur=0;
+ const Y=v=>230-(v-8)/(20-8)*190;
+ st.forEach((x,i)=>{const bx=14+i*90;let top,bot;
+  if(x[3]===0){top=Y(x[1]);bot=Y(8);cur=x[1]}else{top=Y(cur);bot=Y(cur+x[1]);cur+=x[1]}
+  s+=`<rect x="${bx}" y="${top}" width="70" height="${bot-top}" rx="8" fill="${x[2]}"/><text x="${bx+35}" y="${top-6}" text-anchor="middle" fill="#fff" font-weight="800" font-size="13">${x[3]===0?x[1].toFixed(1)+'%':x[1].toFixed(1)}</text><text x="${bx+35}" y="248" text-anchor="middle" fill="#a59fd0" font-size="10.5">${x[0].split(' ')[0]}</text><text x="${bx+35}" y="262" text-anchor="middle" fill="#a59fd0" font-size="10.5">${x[0].split(' ').slice(1).join(' ')}</text>`});
+ $('wf').innerHTML=s+'</svg>'})();
+
+// Chain
+const ch=[['Marketing',C.mk,'Deep discounts chase lead volume','Leads +98%, but lead-to-order falls 8.2% to 4.5%'],
+['Operations',C.op,'Demand spikes the forecast cannot see','Stockouts, then rush freight 2% to 5.9% of revenue'],
+['HR',C.hr,'Overtime and burnout','Overtime 10 to 25 hrs, attrition 9% to 18%'],
+['Finance',C.fi,'Cash tied up','Discounted deals pay late: DSO 41 to 58 days'],
+['Company',  '#ff4f6e','Margin erosion','Each team’s costs look small; the sum is 6.4 pts']];
+$('chain').innerHTML=ch.map((c,i)=>`${i?'<span class="arrow">➜</span>':''}<div class="node" style="--c:${c[1]}"><b>${c[0]}</b>${c[2]}<br><small>${c[3]}</small></div>`).join('');
+
+// Agent investigation log
+const steps=['Linking Marketing, HR, Operations and Finance tables on month…','Checking each department against its own target… all pass.','Computing 45 pairwise correlations across 10 metrics…','Flag: discount % and margin move opposite (r≈'+corr(D.disc.d,D.margin.d).toFixed(2)+')','Flag: lead quality falls while lead volume rises','Testing lag: discount rises 1 to 2 months before freight and overtime rise','Traced loop: discounts → demand spikes → rush freight → overtime → attrition → late cash','Sizing impact with a margin bridge… 6.4 pts explained','Verdict: this is a cross-functional problem that started with a marketing incentive.'];
+let busy=0;$('run').onclick=()=>{if(busy)return;busy=1;$('log').innerHTML='';let i=0;const t=setInterval(()=>{$('log').innerHTML+=`<div><i>[step ${i+1}/${steps.length}]</i> ${steps[i]}</div>`;$('log').scrollTop=1e5;if(++i>=steps.length){clearInterval(t);busy=0}},650)};
+
+// Chat
+const KB=[
+[/discount|price|promo/,'Discount depth rose from 5% to 14% as Marketing chased volume. It explains about 1.9 margin points directly and feeds the other drivers. Marketing’s KPI (leads) rewards it, so it looks like success from inside the team.'],
+[/lead|marketing|campaign|conversion/,'Leads grew 98%, but lead-to-order fell from 8.2% to 4.5%. Marketing is measured on lead count, not on profit per lead, so the team reports green while sales effort and margin are diluted.'],
+[/attrition|hr|hiring|overtime|burn/,'Attrition doubled from 9% to 18% and overtime grew from 10 to 25 hours per person. HR hit its hiring target, but replacement hiring and overtime pay cost about 1.5 margin points. The root cause sits upstream in Operations’ rush workload.'],
+[/freight|ops|operation|stock|inventory|forecast/,'Operations ships 97% on time, but by expediting. Rush freight grew from 2% to 5.9% of revenue and inventory days from 38 to 60. Forecasts never saw the discount-driven spikes. Impact: about 1.7 points.'],
+[/cash|dso|finance|receiv|budget/,'Finance is 2% under opex plan, yet DSO rose from 41 to 58 days because discounted accounts pay later. Cash is tied up and financing cost rises. Impact: about 1.3 points.'],
+[/root|why|cause|main|summary|decline/,'Root cause: a Marketing incentive (volume over profit) creates unforecast demand spikes. Operations pays with rush freight and stock, HR pays with overtime and attrition, Finance pays with slower cash. No single department breaches its target, so nobody sees it.'],
+[/fix|recommend|action|solve|do/,'Top actions: 1) Measure Marketing on margin-weighted leads. 2) Add a discount approval gate with Finance. 3) Share campaign calendars with Ops 6 weeks ahead. 4) Cap overtime and track attrition by team. Try the simulator to see the combined effect.'],
+[/correl|link|relationship/,'Strongest links: discount ↔ freight, freight ↔ overtime, overtime ↔ attrition, discount ↔ DSO. Open the heatmap to inspect them.']];
+const sg=['What is the root cause?','Why did HR cost rise?','What should we fix first?','Is discounting the problem?'];
+$('sugg').innerHTML=sg.map(s=>`<button class="chip" style="--c:${C.op}">${s}</button>`).join('');
+function add(t,c){const d=document.createElement('div');d.className='m '+c;d.textContent=t;$('msgs').appendChild(d);$('msgs').scrollTop=1e5;return d}
+add('Hi, I’m your profit analyst. Ask me why profit fell, which team is involved, or what to fix first.','a');
+function ask(t){if(!t.trim())return;add(t,'u');const a=add('Analysing…','a');setTimeout(()=>{const l=t.toLowerCase();const m=KB.find(k=>k[0].test(l));a.textContent=m?m[1]:'I can look at Marketing, HR, Operations, Finance, root cause or recommended actions. Try “What is the root cause?”'},600)}
+$('send').onclick=()=>{ask($('q').value);$('q').value=''};$('q').onkeydown=e=>{if(e.key==='Enter')$('send').click()};
+$('sugg').onclick=e=>{if(e.target.tagName=='BUTTON')ask(e.target.textContent)};
+
+// Simulator
+const SM=[['Discount %','disc',5,14,.21,C.mk],['Attrition %','attr',9,18,.167,C.hr],['Rush freight %','exp',2,5.9,.436,C.op],['DSO days','dso',41,58,.0765,C.fi]];
+$('sims').innerHTML=SM.map(s=>`<div class="sl"><span>${s[0]}</span><input type="range" id="s_${s[1]}" min="${s[2]}" max="${s[3]}" step="0.1" value="${s[3]}" style="--c:${s[5]}"><b id="v_${s[1]}">${s[3]}</b></div>`).join('');
+function sim(){let m=qs[3];SM.forEach(s=>{const v=+$('s_'+s[1]).value;$('v_'+s[1]).textContent=v;m+=(s[3]-v)*s[4]});
+ $('proj').textContent=m.toFixed(1)+'%';$('projd').textContent=m>qs[3]+.05?'+'+(m-qs[3]).toFixed(1)+' pts recovered':'no change';$('projb').style.width=Math.min(100,(m-8)/12*100)+'%'}
+$('sims').oninput=sim;sim();
+
+// Recs
+$('recs').innerHTML=[['Marketing + Finance',C.mk,'Gate discounts above 8%','Joint approval; target +1.9 pts'],['Marketing + Ops',C.op,'Share campaign calendar 6 weeks ahead','Cuts rush freight; +1.7 pts'],['HR + Ops',C.hr,'Cap overtime, track attrition by team','Stops burnout loop; +1.5 pts'],['Finance',C.fi,'Tie sales bonuses to cash collection','DSO back toward 45; +1.3 pts']].map(r=>`<div class="rec" style="--c:${r[1]}"><div><b>${r[0]}</b><br>${r[2]}<br><small style="color:var(--mut)">${r[3]}</small></div></div>`).join('');
+</script></body></html>
